@@ -12,6 +12,9 @@
     "build:dev": "NODE_ENV=development ts-node build.ts",
     "build:local": "NODE_ENV=local ts-node build.ts"
   },
+  "repository": {
+      "url": "https://github.com/usetiful/usetiful-sdk"
+  },
   "dependencies": {
     "tslib": "^2.6.3"
   },
