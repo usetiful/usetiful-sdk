@@ -1,0 +1,24 @@
+{
+  "name": "usetiful-sdk",
+  "version": "0.1.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "rm:dist": "rm -rf dist",
+    "build": "NODE_ENV=production ts-node build.ts",
+    "build:dev": "NODE_ENV=development ts-node build.ts",
+    "build:local": "NODE_ENV=local ts-node build.ts"
+  },
+  "dependencies": {
+    "tslib": "^2.6.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "esbuild": "^0.23.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}
