@@ -16,7 +16,7 @@ npm install usetiful-sdk
 To load the Usetiful script, use the loadUsetifulScript function. You need to provide your unique token for it to work.
 
 ```bash 
-import { loadUsetifulScript } from 'usetiful-loader';
+import { loadUsetifulScript } from 'usetiful-sdk';
 
 loadUsetifulScript('your-usetiful-token');
 ```
@@ -26,7 +26,7 @@ loadUsetifulScript('your-usetiful-token');
 You can set tags to customize Usetiful’s behavior or tracking by using the setUsetifulTags function.
 
 ```bash 
-import { setUsetifulTags } from 'usetiful-loader';
+import { setUsetifulTags } from 'usetiful-sdk';
 
 setUsetifulTags({
   userType: 'admin',
@@ -39,7 +39,7 @@ This function adds the tags to the window object so they can be accessed by the 
 
 #### Example
 ```bash
-import { loadUsetifulScript, setUsetifulTags } from 'usetiful-loader';
+import { loadUsetifulScript, setUsetifulTags } from 'usetiful-sdk';
 
 // Load the Usetiful script
 loadUsetifulScript('your-usetiful-token');
