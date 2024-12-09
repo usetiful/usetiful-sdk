@@ -21,6 +21,12 @@ import { loadUsetifulScript } from 'usetiful-sdk';
 loadUsetifulScript('your-usetiful-token');
 ```
 
+To ensure the Usetiful script waits for user identification (via the userId tag), you can use the optional settings parameter with the identifyUser property. This is particularly useful if you want to prevent content from being displayed to unauthenticated users.
+
+```bash 
+loadUsetifulScript('your-usetiful-token', { identifyUser: true });
+```
+
 #### Setting Usetiful Tags
 
 You can set tags to customize Usetiful’s behavior or tracking by using the setUsetifulTags function.
