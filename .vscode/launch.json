@@ -1,0 +1,53 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Jest Tests",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": ["--runInBand", "--no-cache", "--no-coverage"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+      }
+    },
+    {
+      "name": "Debug Current Jest Test",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": ["--runInBand", "--no-cache", "--no-coverage", "${relativeFile}"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+      }
+    },
+    {
+      "name": "Debug Build Script",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/ts-node",
+      "args": ["build.ts"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    {
+      "name": "Attach to Node",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "restart": true,
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": "."
+    }
+  ]
+}
+

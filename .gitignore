@@ -1,5 +1,47 @@
 dist
-yarn-error.log
 node_modules
 .DS_Store
 .npmrc
+.idea/
+coverage/
+.nyc_output/
+
+# Scripts are included in the repository
+!scripts/
+
+# Lock files - packages shouldn't commit these
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# IDE - shared VSCode settings are included for consistent development environment
+# Personal settings backups excluded
+.vscode/settings.json.bak
+.vscode/launch.json.bak
+.vscode/keybindings.json
+
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+
