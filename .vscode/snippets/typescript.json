@@ -1,0 +1,99 @@
+{
+  "Jest Test Suite": {
+    "prefix": "describe",
+    "body": [
+      "describe('$1', () => {",
+      "  beforeEach(() => {",
+      "    $2",
+      "  });",
+      "",
+      "  it('should $3', () => {",
+      "    $4",
+      "  });",
+      "});"
+    ],
+    "description": "Jest test suite with describe and it blocks"
+  },
+  "Jest Test": {
+    "prefix": "it",
+    "body": [
+      "it('should $1', () => {",
+      "  $2",
+      "});"
+    ],
+    "description": "Jest test case"
+  },
+  "Jest Async Test": {
+    "prefix": "ita",
+    "body": [
+      "it('should $1', async () => {",
+      "  $2",
+      "});"
+    ],
+    "description": "Jest async test case"
+  },
+  "Mock Function": {
+    "prefix": "mock",
+    "body": [
+      "const mock$1 = jest.fn($2);"
+    ],
+    "description": "Create Jest mock function"
+  },
+  "JSDoc Function": {
+    "prefix": "jsdoc",
+    "body": [
+      "/**",
+      " * $1",
+      " * @param {$2} $3 - $4",
+      " * @returns {$5} $6",
+      " */"
+    ],
+    "description": "JSDoc comment for function"
+  },
+  "TypeScript Interface": {
+    "prefix": "interface",
+    "body": [
+      "interface $1 {",
+      "  $2: $3;",
+      "}"
+    ],
+    "description": "TypeScript interface"
+  },
+  "TypeScript Export Function": {
+    "prefix": "expfn",
+    "body": [
+      "export function $1($2): $3 {",
+      "  $4",
+      "}"
+    ],
+    "description": "Export TypeScript function"
+  },
+  "Error Handler": {
+    "prefix": "tryerr",
+    "body": [
+      "try {",
+      "  $1",
+      "} catch (error) {",
+      "  console.error('$2:', error);",
+      "  $3",
+      "}"
+    ],
+    "description": "Try-catch error handler"
+  },
+  "SDK Function Template": {
+    "prefix": "sdkfn",
+    "body": [
+      "export function $1($2): $3 {",
+      "  try {",
+      "    if (window.USETIFUL?.$4) {",
+      "      window.USETIFUL.$4($5);",
+      "    }",
+      "  } catch (error) {",
+      "    console.error('Failed to $6:', error);",
+      "  }",
+      "}"
+    ],
+    "description": "SDK function template with error handling"
+  }
+}
+

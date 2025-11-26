@@ -1,0 +1,100 @@
+name: Publish to NPM
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: npm-publish
+      url: https://www.npmjs.com/package/usetiful-sdk
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run type check
+        run: npm run typecheck
+
+      - name: Check code formatting
+        run: npm run format:check
+
+      - name: Run tests with coverage
+        run: npm run test:coverage
+
+      - name: Build package
+        run: npm run build
+
+      - name: Verify package contents
+        run: |
+          echo "📦 Verifying package contents..."
+          npm pack --dry-run
+          echo "📁 Checking dist/ directory..."
+          ls -la dist/
+          echo "✅ Package verification complete"
+
+      - name: Check if version matches release tag
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          RELEASE_TAG=${GITHUB_REF#refs/tags/v}
+          echo "📋 Version check:"
+          echo "  Package version: $PACKAGE_VERSION"
+          echo "  Release tag: $RELEASE_TAG"
+          if [ "$PACKAGE_VERSION" != "$RELEASE_TAG" ]; then
+            echo "❌ Version mismatch: package.json has $PACKAGE_VERSION but release tag is $RELEASE_TAG"
+            exit 1
+          fi
+          echo "✅ Version check passed"
+
+      - name: Verify npm authentication
+        run: |
+          echo "🔐 Verifying npm authentication..."
+          npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Check if package already exists
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          if npm view usetiful-sdk@$PACKAGE_VERSION version 2>/dev/null; then
+            echo "❌ Version $PACKAGE_VERSION already exists on npm"
+            exit 1
+          fi
+          echo "✅ Version $PACKAGE_VERSION is available for publishing"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to npm
+        run: |
+          echo "🚀 Publishing to npm..."
+          npm publish --access public
+          echo "✅ Successfully published to npm"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Verify publication
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          echo "🔍 Verifying publication..."
+          sleep 10  # Wait for npm registry to update
+          if npm view usetiful-sdk@$PACKAGE_VERSION version; then
+            echo "✅ Package successfully published and available on npm"
+            echo "📦 View at: https://www.npmjs.com/package/usetiful-sdk/v/$PACKAGE_VERSION"
+          else
+            echo "❌ Package verification failed"
+            exit 1
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

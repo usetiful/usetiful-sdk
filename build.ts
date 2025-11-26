@@ -19,10 +19,10 @@ esbuild
         isProduction
           ? 'https://www.usetiful.com/dist/usetiful.js'
           : isDevelopment
-          ? 'https://dev.usetiful.com/dist/usetiful.js'
-          : isLocalDevelopment
-          ? 'https://www.usetiful.dev/dist/usetiful.js'
-          : 'https://www.usetiful.com/dist/usetiful.js' // Optional fallback if none match
+            ? 'https://dev.usetiful.com/dist/usetiful.js'
+            : isLocalDevelopment
+              ? 'https://www.usetiful.dev/dist/usetiful.js'
+              : 'https://www.usetiful.com/dist/usetiful.js' // Optional fallback if none match
       ),
     },
     minify: isProduction,

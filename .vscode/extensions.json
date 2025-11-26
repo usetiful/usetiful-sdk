@@ -1,0 +1,34 @@
+{
+  "recommendations": [
+    // Code formatting and quality
+    "esbenp.prettier-vscode",
+
+    // TypeScript support
+    "ms-vscode.vscode-typescript-next",
+
+    // Testing
+    "orta.vscode-jest",
+
+    // Git
+    "eamodio.gitlens",
+
+    // JSON support
+    "ms-vscode.vscode-json",
+
+    // Markdown
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+
+    // NPM support
+    "eg2.vscode-npm-script",
+    "christian-kohler.npm-intellisense",
+
+    // Code navigation
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "bradlc.vscode-tailwindcss"
+  ],
+  "unwantedRecommendations": [
+    "ms-vscode.vscode-eslint"
+  ]
+}
+
