@@ -12,6 +12,7 @@
     "build:dev": "NODE_ENV=development ts-node build.ts",
     "build:local": "NODE_ENV=local ts-node build.ts"
   },
+  "license": "MIT",
   "repository": {
       "url": "https://github.com/usetiful/usetiful-sdk"
   },
