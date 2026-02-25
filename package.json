@@ -1,6 +1,6 @@
 {
   "name": "usetiful-sdk",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "repository": {
-      "url": "https://github.com/usetiful/usetiful-sdk"
+    "url": "https://github.com/usetiful/usetiful-sdk"
   },
   "dependencies": {
     "tslib": "^2.6.3"
